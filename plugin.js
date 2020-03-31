@@ -137,6 +137,9 @@ const buildAuthenticatedRouter = (admin, auth, predefinedRouter, sessionOptions 
   const router = predefinedRouter || express.Router()
   router.use(session({
     ...sessionOptions,
+    
+    resave: true,
+    saveUninitialized: true,
     secret: auth.cookiePassword,
     name: auth.cookieName || 'adminbro',
   }))
